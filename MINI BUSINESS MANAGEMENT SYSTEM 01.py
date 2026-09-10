@@ -34,7 +34,7 @@ while main_menu:
                         another_product = input("\ndo you want to add another product? y/n: ").lower()
                         if another_product == "n":
                             add_another_product = False
-                    print("\n----------------------- \nCURRRENT STOCK \n----------------------- ")
+                    print("\n----------------------- \nCURRENT STOCK \n----------------------- ")
                     for item in products:
                         print(f"{item["name"]} - ₦{item["price"]} - {item["quantity"]} {item["units"]}")
 
@@ -53,11 +53,10 @@ while main_menu:
                         if to_update <1 or to_update > len(products):
                             print("invalid product number. ")
                         else:
-                        #if to_update >= 1 and to_update <= len(products):
                             selected_product = products[to_update - 1]
                             update_choice = int(input("\nwhat do you want to update? \n1. Name \n2. cost price \n3. price \n4. quantity \n5. units \n"))
                             if update_choice < 1 or update_choice > 4:
-                                print("inalid choice")
+                                print("invalid choice")
                             if update_choice == 1:
                                 print(f"current name : {selected_product["name"]}")
                                 new_name = input("enter the new name: ")
@@ -115,7 +114,7 @@ while main_menu:
                         print("\nYOUR CURRENT STOCK")
                         for number, item in enumerate(products, start=1):
                             print(f"{number}. {item["name"]} - ₦{item["price"]} - {item["quantity"]} {item["units"]}")
-                            if item ["quantity"] == 0:
+                            if item["quantity"] == 0:
                                 print(f"⚠️⚠️ OUT OF STOCK! {item["name"]} is finished. ")
                             elif item["quantity"] <= 2:
                                 print(f"⚠️⚠️LOW STOCK! only {item["quantity"]}{item["units"]} left.")
@@ -259,6 +258,7 @@ while main_menu:
                     while changing_quantity:
                         if len(cart) == 0 :
                             print("your cart is empty")
+                            changing_quantity = False 
                         else:
                             for number, item in enumerate(cart, start = 1):
                                 print(f"{number}. {item["name"]} - {item["quantity"]} {item["units"]}")
@@ -278,9 +278,9 @@ while main_menu:
                                             else:
                                                 selected_item["quantity"] = new_quantity
                                                 print("quantity updated successfully.")
-                        change_another_product = input("do you want to change the quantity of another product? y/n: ")
-                        if change_another_product == "n":
-                            changing_quantity = False
+                            change_another_product = input("do you want to change the quantity of another product? y/n: ")
+                            if change_another_product == "n":
+                                changing_quantity = False
 
                 if buyer_options == 6:
                     if len(cart) == 0:
